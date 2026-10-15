@@ -244,6 +244,7 @@ h1, h2, h3, p { margin-top: 0; }
   .look-caption { display: block; }
   .look-caption strong { font-size: 15px; }
   .look-caption small { min-height: 25px; }
+  .look-card:nth-child(-n+4) .look-caption strong { min-height: 2.67em; }
   .look-count { display: none; }
   .about-section { min-height: 200px; grid-template-columns: 1fr; gap: 20px; padding: 30px 5%; }
   .about-number { grid-column: 1 / -1; align-self: end; padding: 0; }
