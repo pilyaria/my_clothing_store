@@ -252,6 +252,9 @@ h1, h2, h3, p { margin-top: 0; }
   .detail-view { min-height: calc(100vh - 170px); padding: 18px 5% 55px; }
   .photo-lightbox > img { max-width: 94vw; max-height: 92dvh; }
   .lightbox-close { top: 10px; right: 10px; }
+  .lightbox-nav { top: auto; bottom: 10px; width: 40px; height: 40px; transform: none; border-radius: 50%; font-size: 24px; }
+  .lightbox-prev { left: 10px; }
+  .lightbox-next { right: 10px; }
   .detail-back-row { align-items: start; margin-bottom: 17px; }
   .back-button { font-size: 10px; }
   .detail-id { max-width: 125px; padding-top: 10px; font-size: 7px; text-align: right; }
