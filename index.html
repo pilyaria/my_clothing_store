@@ -793,28 +793,28 @@
           title: "Платье-купальник",
           note: "Мини-платье со скрытыми шортиками",
           photo: "swimsuit.png",
-          items: ["w22"],
+          items: ["w21"],
         },
         {
           id: "look-15",
           title: "Спортивное платье oodji",
           note: "Домашнее спортивное платье из хлопка",
           photo: "IMG_8880.JPG",
-          items: ["w23"],
+          items: ["w22"],
         },
         {
           id: "look-17",
           title: "Утеплённое пальто FILA",
           note: "Для осени, зимы и снежных прогулок",
           photo: "fila.jpg",
-          items: ["w24"],
+          items: ["w23"],
         },
         {
           id: "look-18",
           title: "Утеплённая куртка ONLY",
           note: "Куртка для тёплой зимы",
           photo: "photo_2026-10-14_21-33-18.jpg",
-          items: ["w25"],
+          items: ["w24"],
         },
       ];
 
@@ -831,9 +831,16 @@
       let lightboxPhotoIndex = 0;
       let lightboxSwipeStart = null;
       let activeFilter = "all";
+      const reservedProductIds = new Set(["w19", "w14", "w05", "w08", "w24"]);
 
       function imagePath(filename) {
         return `img/${encodeURIComponent(filename)}`;
+      }
+
+      function reservationBadge(product, className = "") {
+        return reservedProductIds.has(product.id)
+          ? `<span class="reservation-badge ${className}">БРОНЬ</span>`
+          : "";
       }
 
       function priceLabel(product) {
@@ -867,9 +874,9 @@
         return `<article class="product-card" style="--card-index:${index}">
 				<button class="product-image" type="button" data-product="${product.id}" aria-label="Подробнее: ${product.title}">
 					<img src="${imagePath(product.photo)}" alt="${product.title}" loading="lazy">
-					<span class="image-index">${typeLabel}</span><span class="image-open arrow-icon" aria-hidden="true">↗︎</span>
+					<span class="image-index">${typeLabel}</span>${reservationBadge(product, "reservation-badge--overlay")}<span class="image-open arrow-icon" aria-hidden="true">↗︎</span>
 				</button>
-				<div class="product-info"><div><p class="product-kind">${typeLabel} · ОДНА ПОЗИЦИЯ</p><h3>${product.title}</h3></div><span class="product-price">${priceLabel(product)}</span></div>
+				<div class="product-info"><div><p class="product-kind">${typeLabel} · ОДНА ПОЗИЦИЯ</p><h3>${product.title}</h3></div><span class="product-price">${priceLabel(product)}${reservationBadge(product)}</span></div>
 				<div class="product-facts">${productFacts(product)
           .map((fact) => `<span>${fact}</span>`)
           .join("")}</div>
@@ -976,9 +983,9 @@
         detailView.hidden = false;
         detailView.innerHTML = `
 				<div class="detail-back-row"><button class="back-button" type="button" data-back><span aria-hidden="true">←</span> Назад к каталогу</button><span class="detail-id">${categoryLabel(product)} / ${product.id.toUpperCase()}</span></div>
-				<section class="product-detail"><div class="detail-gallery"><button class="detail-photo" type="button" data-zoom-photo aria-label="Увеличить фото: ${product.title}"><img data-main-image src="${imagePath(product.photo)}" alt="${product.title}"><span class="detail-photo-label">${categoryLabel(product)}</span><span class="zoom-hint" aria-hidden="true">⤢</span></button>
+				<section class="product-detail"><div class="detail-gallery"><button class="detail-photo" type="button" data-zoom-photo aria-label="Увеличить фото: ${product.title}"><img data-main-image src="${imagePath(product.photo)}" alt="${product.title}">${reservationBadge(product, "reservation-badge--overlay")}<span class="detail-photo-label">${categoryLabel(product)}</span><span class="zoom-hint" aria-hidden="true">⤢</span></button>
 					<div class="detail-thumbnails" aria-label="Фотографии товара">${photos.map((photo, index) => `<button type="button" class="detail-thumb${index === 0 ? " is-active" : ""}" data-gallery-src="${imagePath(photo)}" aria-label="Фото ${index + 1} товара"><img src="${imagePath(photo)}" alt="" loading="lazy"></button>`).join("")}</div></div>
-					<div class="detail-copy"><p class="eyebrow"><span>${product.id.toUpperCase()}</span> ${categoryLabel(product)} · ДОМАШНЯЯ РАСПРОДАЖА</p><h1>${product.title}</h1>${product.description ? `<p class="detail-description">${product.description}</p>` : ""}<p class="detail-price">${priceLabel(product)}</p>
+					<div class="detail-copy"><p class="eyebrow"><span>${product.id.toUpperCase()}</span> ${categoryLabel(product)} · ДОМАШНЯЯ РАСПРОДАЖА</p><h1>${product.title}</h1>${product.description ? `<p class="detail-description">${product.description}</p>` : ""}<p class="detail-price">${priceLabel(product)}${reservationBadge(product)}</p>
 						<dl class="spec-list">${renderSpecs(product)}</dl>
 						<button class="button button-dark copy-button" type="button" data-copy="${product.id}">Скопировать название <span class="arrow-icon" aria-hidden="true">↗︎</span></button><p class="detail-hint">Уточните наличие у продавца в <a href="https://t.me/pilyaria" target="_blank" title="Telegram Message" rel="noopener noreferrer" class="contacts-section-link">@pilyaria</a>. Корзины и регистрации нет. <span id="copy-status" aria-live="polite"></span></p>
 						${matchingLooks.length ? `<div class="look-suggestion"><span class="suggestion-mark">+</span><span>Входит в готовый образ</span><button type="button" data-look="${matchingLooks[0].id}">Образ ${matchingLooks[0].id.slice(5)}</button></div>` : ""}
@@ -1016,7 +1023,7 @@
 				<div class="detail-back-row"><button class="back-button" type="button" data-back><span aria-hidden="true">←</span> Назад к каталогу</button><span class="detail-id">ГОТОВЫЕ ОБРАЗЫ / ${look.id.slice(5)}</span></div>
 				<section class="look-detail"><button class="look-detail-photo" type="button" data-zoom-look aria-label="Увеличить фото образа: ${look.title}"><img src="${imagePath(look.photo)}" alt="${look.title}"><span class="detail-photo-label">ГОТОВЫЙ ОБРАЗ</span><span class="zoom-hint" aria-hidden="true">⤢</span></button>
 					<div class="look-detail-copy"><p class="eyebrow"><span>${look.id.slice(5)}</span> ВЕЩИ ВМЕСТЕ</p><h1>${look.title}</h1><p class="detail-description">${look.note}.</p>
-						<div class="look-items">${lookProducts.map((product) => `<button class="look-item" type="button" data-product="${product.id}"><img src="${imagePath(product.photo)}" alt="" loading="lazy"><span><small>${product.category === "tech" ? "ТЕХНИКА" : product.category === "bottom" ? "НИЗ" : product.category === "top" ? "ВЕРХ" : "КОМПЛЕКТ"}</small><strong>${product.title}</strong></span><span class="look-item-price">${priceLabel(product)}</span><span class="arrow-icon" aria-hidden="true">↗︎</span></button>`).join("")}</div>
+						<div class="look-items">${lookProducts.map((product) => `<button class="look-item" type="button" data-product="${product.id}"><img src="${imagePath(product.photo)}" alt="" loading="lazy"><span><small>${product.category === "tech" ? "ТЕХНИКА" : product.category === "bottom" ? "НИЗ" : product.category === "top" ? "ВЕРХ" : "КОМПЛЕКТ"}</small><strong>${product.title}</strong>${reservationBadge(product)}</span><span class="look-item-price">${priceLabel(product)}</span><span class="arrow-icon" aria-hidden="true">↗︎</span></button>`).join("")}</div>
 						<div class="look-total"><span>Общая стоимость</span><strong>${total ? priceLabel(total) : "См. цены позиций"}</strong></div><a class="text-link" href="#catalog">Вернуться ко всем вещам <span class="arrow-icon" aria-hidden="true">↗︎</span></a>
 					</div></section>`;
         window.scrollTo({ top: 0, behavior: "smooth" });

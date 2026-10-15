@@ -81,12 +81,15 @@ h1, h2, h3, p { margin-top: 0; }
 .product-image img { transition: transform .5s cubic-bezier(.2,.7,.25,1); }
 .product-image:hover img { transform: scale(1.04); }
 .image-index { position: absolute; top: 12px; left: 12px; padding: 7px 9px; background: var(--paper); color: var(--green-dark); font-size: 8px; font-weight: 700; letter-spacing: .1em; }
+.reservation-badge { width: fit-content; display: inline-flex; align-items: center; padding: 6px 8px; background: var(--coral); color: white; font-family: var(--sans); font-size: 8px; font-weight: 700; letter-spacing: .1em; line-height: 1; }
+.reservation-badge--overlay { position: absolute; z-index: 1; top: 12px; right: 12px; }
 .image-open, .look-open { position: absolute; right: 12px; bottom: 12px; width: 34px; height: 34px; display: grid; place-items: center; background: var(--lime); color: var(--green-dark); font-size: 17px; transition: transform .2s ease; }
 .product-image:hover .image-open, .look-card:hover .look-open { transform: rotate(45deg); }
 .product-info { display: flex; align-items: end; justify-content: space-between; gap: 10px; padding-top: 14px; }
 .product-kind { margin-bottom: 7px; color: var(--muted); font-size: 8px; font-weight: 700; letter-spacing: .1em; }
 .product-info h3 { margin: 0; font-family: var(--serif); font-size: 19px; font-weight: 500; line-height: 1.2; }
-.product-price { flex: 0 0 auto; padding-bottom: 2px; color: var(--green); font-size: 10px; font-weight: 700; text-align: right; }
+.product-price { flex: 0 0 auto; display: flex; align-items: center; justify-content: flex-end; gap: 8px; padding-bottom: 2px; color: var(--green); font-size: 10px; font-weight: 700; text-align: right; white-space: nowrap; }
+.product-price .reservation-badge { color: white; }
 .product-facts { min-height: 35px; display: flex; flex-wrap: wrap; align-content: start; gap: 4px 10px; margin-top: 9px; color: var(--muted); font-size: 9px; line-height: 1.5; }
 .product-facts span + span::before { margin-right: 9px; color: var(--coral); content: "/"; }
 .card-link { width: 100%; display: flex; justify-content: space-between; margin-top: 15px; padding: 11px 0 0; border: 0; border-top: 1px solid var(--line); background: none; color: var(--muted); font-size: 10px; text-align: left; transition: color .2s ease; }
@@ -146,6 +149,7 @@ h1, h2, h3, p { margin-top: 0; }
 .detail-photo, .look-detail-photo { position: relative; height: auto; aspect-ratio: 4 / 4.75; overflow: hidden; background: #e7e8df; }
 .detail-photo { width: 100%; display: block; padding: 0; border: 0; text-align: left; cursor: zoom-in; }
 .detail-photo img, .look-detail-photo img { object-position: center; }
+.detail-photo .reservation-badge--overlay { right: auto; left: 12px; }
 .zoom-hint { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; display: grid; place-items: center; background: var(--lime); color: var(--green-dark); font-size: 19px; transition: transform .2s ease; }
 .detail-photo:hover .zoom-hint { transform: scale(1.08); }
 .detail-thumbnails { display: flex; gap: 9px; margin-top: 10px; overflow-x: auto; padding: 2px 1px 7px; }
@@ -156,7 +160,7 @@ h1, h2, h3, p { margin-top: 0; }
 .detail-copy { padding-top: 26px; }
 .detail-copy h1, .look-detail-copy h1 { max-width: 530px; font-size: clamp(40px, 4.7vw, 60px); }
 .detail-description { max-width: 440px; margin: 19px 0 20px; color: #59645d; font-size: 12px; line-height: 1.8; }
-.detail-price { margin: 0 0 23px; color: var(--green); font-family: var(--serif); font-size: 25px; }
+.detail-price { display: flex; align-items: center; gap: 10px; margin: 0 0 23px; color: var(--green); font-family: var(--serif); font-size: 25px; }
 .spec-list { margin: 0 0 25px; border-top: 1px solid var(--line); }
 .spec-list div { min-height: 42px; display: flex; align-items: center; justify-content: space-between; gap: 15px; border-bottom: 1px solid var(--line); font-size: 10px; }
 .spec-list dt { color: var(--muted); }
@@ -177,6 +181,7 @@ h1, h2, h3, p { margin-top: 0; }
 .look-item small, .look-item strong { display: block; }
 .look-item small { margin-bottom: 5px; color: var(--muted); font-size: 7px; font-weight: 700; letter-spacing: .08em; }
 .look-item strong { font-family: var(--serif); font-size: 15px; font-weight: 500; }
+.look-item .reservation-badge { margin-top: 6px; }
 .look-item-price { color: var(--green); font-size: 9px; }
 .look-item > span:last-child { color: var(--coral); font-size: 14px; }
 .look-total { display: flex; justify-content: space-between; gap: 10px; padding: 17px 0 22px; font-size: 10px; }
@@ -229,7 +234,7 @@ h1, h2, h3, p { margin-top: 0; }
   .product-info { display: block; padding-top: 10px; }
   .product-kind { margin-bottom: 5px; font-size: 7px; }
   .product-info h3 { min-height: 38px; font-size: 16px; }
-  .product-price { display: block; margin-top: 6px; text-align: left; }
+  .product-price { justify-content: flex-start; margin-top: 6px; text-align: left; }
   .product-facts { min-height: 43px; gap: 3px 7px; font-size: 8px; }
   .product-facts span + span::before { margin-right: 6px; }
   .card-link { margin-top: 10px; font-size: 9px; }
