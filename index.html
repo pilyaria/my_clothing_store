@@ -32,8 +32,8 @@
 				<h1 id="hero-title">Хорошие вещи<br>ищут <em>новый дом.</em></h1>
 				<p class="hero-text">Одежда, которую приятно носить. Выберите вещь, чтобы посмотреть детали, размер и стоимость.</p>
 				<div class="hero-actions">
-					<a class="button button-dark" href="#catalog-grid">Смотреть вещи <span aria-hidden="true">↘</span></a>
-					<a class="button button-outline" href="#looks">Все образы <span aria-hidden="true">↘</span></a>
+					<a class="button button-dark" href="#catalog-grid">Смотреть вещи <span aria-hidden="true">↘︎</span></a>
+					<a class="button button-outline" href="#looks">Все образы <span aria-hidden="true">↘︎</span></a>
 				</div>
 				<div class="hero-footnote"><span>Личная распродажа</span><span>·</span><span>Всё в единственном экземпляре</span></div>
 			</div>
@@ -262,6 +262,14 @@
 			window.scrollTo({ top: 0, behavior: "smooth" });
 		}
 
+		function showCatalogSection(id) {
+			const section = document.getElementById(id);
+			if (!section) return showCatalog();
+			detailView.hidden = true;
+			catalogView.hidden = false;
+			requestAnimationFrame(() => section.scrollIntoView({ behavior: "smooth", block: "start" }));
+		}
+
 		function showProduct(id) {
 			const product = allProducts.find((item) => item.id === id);
 			if (!product) return showCatalog();
@@ -304,6 +312,7 @@
 			const route = window.location.hash.slice(1);
 			if (route.startsWith("item-")) return showProduct(route.slice(5));
 			if (route.startsWith("look-")) return showLook(route);
+			if (route) return showCatalogSection(route);
 			showCatalog();
 		}
 

@@ -48,7 +48,7 @@ h1, h2, h3, p { margin-top: 0; }
 .button-dark:hover { background: var(--green); }
 .button-outline { border: 1px solid var(--green-dark); background: transparent; color: var(--green-dark); }
 .button-outline:hover { background: var(--paper-deep); }
-.button span { color: var(--lime); font-size: 16px; }
+.button span { color: var(--lime); font-family: Arial, sans-serif; font-size: 16px; font-variant-emoji: text; }
 .button-outline span { color: var(--green); }
 .hero-footnote { display: flex; gap: 10px; margin-top: 36px; color: var(--muted); font-size: 10px; }
 .hero-photo { position: relative; width: min(100%, 430px); min-height: 0; align-self: center; justify-self: center; overflow: hidden; background: #d7d6c8; animation: rise-in .7s .12s both; }
