@@ -31,8 +31,8 @@
         ><span>личный<br />гардероб</span></a
       >
       <nav class="main-nav" aria-label="Главная навигация">
-        <a href="#catalog">Вещи</a>
         <a href="#looks">Готовые образы</a>
+        <a href="#catalog">Вещи</a>
         <a href="#accessories">Аксессуары</a>
         <a href="#beauty">Красота</a>
         <a href="#tech">Техника</a>
@@ -89,6 +89,22 @@
         <span class="hero-index" aria-hidden="true">ГАРДЕРОБ / 2026</span>
       </section>
 
+      <section class="looks-section" id="looks" aria-labelledby="looks-title">
+        <div class="looks-intro">
+          <p class="eyebrow"><span>02</span> УЖЕ СОБРАЛА ЗА ВАС</p>
+          <h2 id="looks-title">Готовые<br /><em>образы.</em></h2>
+          <p>
+            Несколько вещей вместе — чтобы увидеть, как они дружат. Нажмите на
+            комплект, чтобы посмотреть состав.
+          </p>
+          <a class="text-link" href="#catalog"
+            >Вернуться к отдельным вещам
+            <span class="arrow-icon" aria-hidden="true">↗︎</span></a
+          >
+        </div>
+        <div class="looks-grid" id="looks-grid"></div>
+      </section>
+
       <section
         class="catalog-section"
         id="catalog"
@@ -96,7 +112,7 @@
       >
         <div class="section-heading">
           <div>
-            <p class="eyebrow"><span>02</span> НЕ СПЕША, С УДОВОЛЬСТВИЕМ</p>
+            <p class="eyebrow"><span>03</span> НЕ СПЕША, С УДОВОЛЬСТВИЕМ</p>
             <h2 id="catalog-title">Вещи</h2>
           </div>
           <p class="section-aside">
@@ -138,22 +154,6 @@
           <span class="status-dot"></span> Цены указаны в сербских динарах
           (дин.), если не отмечено евро.
         </p>
-      </section>
-
-      <section class="looks-section" id="looks" aria-labelledby="looks-title">
-        <div class="looks-intro">
-          <p class="eyebrow"><span>03</span> УЖЕ СОБРАЛА ЗА ВАС</p>
-          <h2 id="looks-title">Готовые<br /><em>образы.</em></h2>
-          <p>
-            Несколько вещей вместе — чтобы увидеть, как они дружат. Нажмите на
-            комплект, чтобы посмотреть состав.
-          </p>
-          <a class="text-link" href="#catalog"
-            >Вернуться к отдельным вещам
-            <span class="arrow-icon" aria-hidden="true">↗︎</span></a
-          >
-        </div>
-        <div class="looks-grid" id="looks-grid"></div>
       </section>
 
       <section
@@ -273,6 +273,76 @@
       const products = [
         {
           id: "w01",
+          title: "Свободная летняя рубашка 48 размер",
+          category: "top",
+          photo: "IMG_8870.JPG",
+          gallery: [
+            "IMG_8873.JPG",
+            "IMG_8874.JPG",
+            "IMG_8875.JPG",
+            "IMG_8876.JPG",
+          ],
+          material: "Хлопок",
+          size: "48, оверсайз на 44-46 размер",
+          condition: "Новая вещь",
+          price: 500,
+        },
+        {
+          id: "w02",
+          title: "Летняя майка LCW размер 44-46",
+          category: "top",
+          photo: "IMG_8865.JPG",
+          gallery: ["IMG_8878.JPG", "IMG_8879.JPG"],
+          material: "Нет этикетки",
+          size: "Нет этикетки",
+          condition: "Хорошее",
+          price: 500,
+        },
+        {
+          id: "w03",
+          title: "Широкие джинсы HOUSE размер 38 Eu",
+          category: "bottom",
+          photo: "IMG_8812.JPG",
+          gallery: [
+            "IMG_8814.JPG",
+            "IMG_8816.JPG",
+            "IMG_8817.JPG",
+            "IMG_8818.JPG",
+          ],
+          material: "Хлопок",
+          size: "38 Eu",
+          condition: "Хорошее",
+          price: 1000,
+        },
+        {
+          id: "w04",
+          title: "Лёгкий джемпер LCW размер 44",
+          category: "top",
+          photo: "IMG_8857.JPG",
+          gallery: ["IMG_8859.JPG", "IMG_8860.JPG", "IMG_8858.JPG"],
+          material: "Акрил",
+          size: "XS указан на этикетке, свободный на 44 размер",
+          condition: "Отличное",
+          price: 500,
+        },
+        {
+          id: "w05",
+          title: "Потёртые джинсы ZARA размер 40",
+          category: "bottom",
+          photo: "IMG_8852.JPG",
+          gallery: [
+            "IMG_8855.JPG",
+            "IMG_8856.JPG",
+            "IMG_8853.JPG",
+            "IMG_8854.JPG",
+          ],
+          material: "Хлопок",
+          size: "40",
+          condition: "Среднее",
+          price: 300,
+        },
+        {
+          id: "w06",
           title: "Шерстяной костюм 44-46 размер",
           category: "set",
           photo: "IMG_9008.JPG",
@@ -295,284 +365,7 @@
             "Комплект очень хорош тянется (попыталась показать это на фото). Верх и низ продаются комплектом. Фотографии состава и производителя включены в галерею.",
         },
         {
-          id: "w02",
-          title: "Пляжный топ 44-46 размер",
-          category: "top",
-          photo: "IMG_8801.JPG",
-          gallery: ["IMG_8803.JPG", "IMG_8804.JPG"],
-          material: "Хлопок + полиэстер",
-          condition: "Новая вещь",
-          price: 300,
-        },
-        {
-          id: "w03",
-          title: "Джинсовые шорты 38 Eu",
-          category: "bottom",
-          photo: "IMG_8805.JPG",
-          gallery: ["IMG_8806.JPG", "IMG_8807.JPG", "IMG_8808.JPG"],
-          material: "Хлопок",
-          size: "38 Eu",
-          condition: "Хорошее",
-          price: 800,
-        },
-        {
-          id: "w04",
-          title: "Топ с открытыми плечами Befree размер М",
-          category: "top",
-          photo: "IMG_8813.JPG",
-          gallery: ["IMG_8819.JPG", "IMG_8820.JPG", "IMG_8821.JPG"],
-          material: "Полиамид + эластан",
-          size: "M",
-          condition: "Новая вещь",
-          price: 700,
-        },
-        {
-          id: "w05",
-          title: "Широкие джинсы HOUSE размер 38 Eu",
-          category: "bottom",
-          photo: "IMG_8812.JPG",
-          gallery: [
-            "IMG_8814.JPG",
-            "IMG_8816.JPG",
-            "IMG_8817.JPG",
-            "IMG_8818.JPG",
-          ],
-          material: "Хлопок",
-          size: "38 Eu",
-          condition: "Хорошее",
-          price: 1000,
-        },
-        {
-          id: "w06",
-          title: "Полупрозрачная рубашка Befree размер М",
-          category: "top",
-          photo: "IMG_8828.JPG",
-          gallery: ["IMG_8836.JPG", "IMG_8838.JPG", "IMG_8837.JPG"],
-          material: "Полиэстер",
-          size: "M",
-          condition: "Новая вещь",
-          price: 800,
-        },
-        {
           id: "w07",
-          title: "Летние шорты LTB размер 44 Ru",
-          category: "bottom",
-          photo: "IMG_8823.JPG",
-          gallery: [
-            "IMG_8824.JPG",
-            "IMG_8825.JPG",
-            "IMG_8826.JPG",
-            "IMG_8827.JPG",
-          ],
-          material: "Хлопок",
-          size: "нет этикетки",
-          condition: "Хорошее",
-          price: 800,
-        },
-        {
-          id: "w08",
-          title: "Потёртые джинсы ZUIKI 42 Fr|It?",
-          category: "bottom",
-          photo: "IMG_8832.JPG",
-          gallery: ["IMG_8833.JPG", "IMG_8835.JPG", "IMG_8834.JPG"],
-          material: "Хлопок",
-          size: "42",
-          condition: "Хорошее",
-          price: 1000,
-        },
-        {
-          id: "w09",
-          title: "Асимметричный топ размер 44-46",
-          category: "top",
-          photo: "IMG_8845.JPG",
-          gallery: ["IMG_8846.JPG"],
-          material: "Нет этикетки",
-          size: "Нет этикетки",
-          condition: "Новая вещь",
-          price: 300,
-        },
-        {
-          id: "w10",
-          title: "Джинсы Slim&Denim 44-46 размер",
-          category: "bottom",
-          photo: "IMG_8841.JPG",
-          gallery: ["IMG_8843.JPG", "IMG_8844.JPG", "IMG_8842.JPG"],
-          material: "Хлопок",
-          size: "30",
-          condition: "Хорошее",
-          price: 1000,
-        },
-        {
-          id: "w11",
-          title: "Топ-лапша на завязках HOUSE размер M",
-          category: "top",
-          photo: "IMG_8861.JPG",
-          gallery: ["IMG_8862.JPG", "IMG_8864.JPG", "IMG_8863.JPG"],
-          material: "Хлопок",
-          size: "M",
-          condition: "Отличное",
-          price: 300,
-        },
-        {
-          id: "w12",
-          title: "Потёртые джинсы ZARA размер 40",
-          category: "bottom",
-          photo: "IMG_8852.JPG",
-          gallery: [
-            "IMG_8855.JPG",
-            "IMG_8856.JPG",
-            "IMG_8853.JPG",
-            "IMG_8854.JPG",
-          ],
-          material: "Хлопок",
-          size: "40",
-          condition: "Среднее",
-          price: 300,
-        },
-        {
-          id: "w13",
-          title: "Лёгкий джемпер LCW размер 44",
-          category: "top",
-          photo: "IMG_8857.JPG",
-          gallery: ["IMG_8859.JPG", "IMG_8860.JPG", "IMG_8858.JPG"],
-          material: "Акрил",
-          size: "XS указан на этикетке, свободный на 44 размер",
-          condition: "Отличное",
-          price: 500,
-        },
-        {
-          id: "w14",
-          title: "Летняя майка LCW размер 44-46",
-          category: "top",
-          photo: "IMG_8865.JPG",
-          gallery: ["IMG_8878.JPG", "IMG_8879.JPG"],
-          material: "Нет этикетки",
-          size: "Нет этикетки",
-          condition: "Хорошее",
-          price: 500,
-        },
-        {
-          id: "w15",
-          title: "Тёмные джинсы s.Oliver размер 40",
-          category: "bottom",
-          photo: "IMG_8890.JPG",
-          gallery: ["IMG_8889.JPG", "IMG_8888.JPG"],
-          material: "Хлопок",
-          size: "40",
-          condition: "Хорошее",
-          price: 800,
-        },
-        {
-          id: "w16",
-          title: "Джемпер LCW с декором размер L",
-          category: "top",
-          photo: "IMG_8893.JPG",
-          gallery: ["IMG_8895.JPG", "IMG_8894.JPG"],
-          material: "Хлопок",
-          size: "L",
-          condition: "Хорошее",
-          price: 500,
-        },
-        {
-          id: "w17",
-          title: "Футболка America Today размер L",
-          category: "top",
-          photo: "IMG_8885.JPG",
-          gallery: ["IMG_8886.JPG", "IMG_8887.JPG"],
-          material: "Хлопок",
-          size: "L",
-          condition: "Хорошее",
-          price: 500,
-        },
-        {
-          id: "w18",
-          title: "Джинсовые шорты размер 38 Eu",
-          category: "bottom",
-          photo: "IMG_8891.JPG",
-          material: "Хлопок",
-          size: "38 Eu",
-          condition: "Хорошее",
-          price: 500,
-        },
-        {
-          id: "w19",
-          title: "Свободная летняя рубашка 48 размер",
-          category: "top",
-          photo: "IMG_8870.JPG",
-          gallery: [
-            "IMG_8873.JPG",
-            "IMG_8874.JPG",
-            "IMG_8875.JPG",
-            "IMG_8876.JPG",
-          ],
-          material: "Хлопок",
-          size: "48, оверсайз на 44-46 размер",
-          condition: "Новая вещь",
-          price: 500,
-        },
-        {
-          id: "w20",
-          title: "Спортивный джемпер H&M DIVIDED 44 размер",
-          category: "top",
-          photo: "IMG_8898.JPG",
-          gallery: ["IMG_8899.JPG", "IMG_8900.JPG", "IMG_8901.JPG"],
-          material: "Хлопок",
-          size: "XS указан на этикетке, но на 44 размер норм",
-          condition: "Отличное",
-          price: 500,
-        },
-        {
-          id: "w21",
-          title:
-            "Мини-платье / купальник XXL (китайский размер, подойдёт на 44-46)",
-          category: "set",
-          photo: "swimsuit.png",
-          gallery: [
-            "IMG_8799.JPG",
-            "IMG_8800.JPG",
-            "IMG_8798.JPG",
-            "IMG_8797.JPG",
-          ],
-          material: "Полиэстер + эластан",
-          size: "XXL (китайская размерная сетка)",
-          condition: "Отличное, надевался один раз для съёмок",
-          price: 1000,
-          description:
-            "Купальник со скрытыми шортиками. Под водой декоративные элементы развеваются, как щупальца медузы.",
-        },
-        {
-          id: "w22",
-          title: "Спортивное платье oodji М",
-          category: "set",
-          photo: "IMG_8880.JPG",
-          gallery: ["IMG_8881.JPG", "IMG_8883.JPG", "IMG_8882.JPG"],
-          material: "Хлопок",
-          size: "M",
-          condition: "Хорошее",
-          price: 500,
-        },
-        {
-          id: "w23",
-          title: "Утеплённое пальто FILA 44",
-          category: "set",
-          photo: "fila.jpg",
-          gallery: [
-            "IMG_8902.JPG",
-            "IMG_8903.JPG",
-            "IMG_8904.JPG",
-            "IMG_8905.JPG",
-            "IMG_8906.JPG",
-            "photo_2026-10-14_21-33-43.jpg",
-          ],
-          material: "Полиэстер",
-          size: "158–164; подойдёт на взрослый 44",
-          condition: "Отличное",
-          price: 2500,
-          description:
-            "Надевалось для катания на лыжах в Копаонике. Не промокало во время снегопада; подойдёт подростку или на взрослый размер 44.",
-        },
-        {
-          id: "w25",
           title: "Серое платье H&M, размер 40",
           category: "set",
           photo: "IMG_8999.JPG",
@@ -592,7 +385,89 @@
             "Приталенное платье: на рост 165 см чуть прикрывает колени. Спина была полностью открыта от пояса; для мероприятия её частично зашили, но можно вернуть первоначальный вид.",
         },
         {
-          id: "w26",
+          id: "w08",
+          title: "Джемпер LCW с декором размер L",
+          category: "top",
+          photo: "IMG_8893.JPG",
+          gallery: ["IMG_8895.JPG", "IMG_8894.JPG"],
+          material: "Хлопок",
+          size: "L",
+          condition: "Хорошее",
+          price: 500,
+        },
+        {
+          id: "w09",
+          title: "Асимметричный топ размер 44-46",
+          category: "top",
+          photo: "IMG_8845.JPG",
+          gallery: ["IMG_8846.JPG"],
+          material: "Нет этикетки",
+          size: "Нет этикетки",
+          condition: "Новая вещь",
+          price: 300,
+        },
+        {
+          id: "w10",
+          title: "Блистящая юбка из тонкой джинсы размер 44-46",
+          category: "bottom",
+          photo: "photo_2026-10-19_21-08-02.jpg",
+          gallery: [
+            "photo_2026-10-19_21-08-28.jpg",
+            "photo_2026-10-19_21-08-33.jpg",
+          ],
+          material: "хлопок + полиэстер",
+          size: "этикетки нет, но подойдёт на 44-46 размер",
+          condition: "Отличное, надевалась пару раз",
+          price: 1000,
+          description:
+            "Юбка из тонкой джинсы с блестящим покрытием. На рост 165 примерно до середины голени. Подойдёт на 44-46 размер.",
+        },
+        {
+          id: "w11",
+          title: "Топ с открытыми плечами Befree размер М",
+          category: "top",
+          photo: "IMG_8813.JPG",
+          gallery: ["IMG_8819.JPG", "IMG_8820.JPG", "IMG_8821.JPG"],
+          material: "Полиамид + эластан",
+          size: "M",
+          condition: "Новая вещь",
+          price: 700,
+        },
+        {
+          id: "w12",
+          title: "Полупрозрачная рубашка Befree размер М",
+          category: "top",
+          photo: "IMG_8828.JPG",
+          gallery: ["IMG_8836.JPG", "IMG_8838.JPG", "IMG_8837.JPG"],
+          material: "Полиэстер",
+          size: "M",
+          condition: "Новая вещь",
+          price: 800,
+        },
+        {
+          id: "w13",
+          title: "Потёртые джинсы ZUIKI 42 Fr|It?",
+          category: "bottom",
+          photo: "IMG_8832.JPG",
+          gallery: ["IMG_8833.JPG", "IMG_8835.JPG", "IMG_8834.JPG"],
+          material: "Хлопок",
+          size: "42",
+          condition: "Хорошее",
+          price: 1000,
+        },
+        {
+          id: "w14",
+          title: "Джинсы Slim&Denim 44-46 размер",
+          category: "bottom",
+          photo: "IMG_8841.JPG",
+          gallery: ["IMG_8843.JPG", "IMG_8844.JPG", "IMG_8842.JPG"],
+          material: "Хлопок",
+          size: "30",
+          condition: "Хорошее",
+          price: 1000,
+        },
+        {
+          id: "w15",
           title: "Лёгкое платье с запАхом и животным принтом размер M",
           category: "set",
           photo: "IMG_8996.JPG",
@@ -611,7 +486,7 @@
             "Лёгкое платье с запАхом и разрезами по бокам — летом в нём не жарко.",
         },
         {
-          id: "w27",
+          id: "w16",
           title: "Платье-рубашка DeFacto с леопардовым принтом размер 38",
           category: "set",
           photo: "IMG_9005.JPG",
@@ -630,15 +505,157 @@
             "Прямой крой с небольшим расширением к низу. Лучше подойдёт девушке с узкими бёдрами. Тонкий ремешок идёт в комплекте",
         },
         {
+          id: "w17",
+          title: "Пляжный топ 44-46 размер",
+          category: "top",
+          photo: "IMG_8801.JPG",
+          gallery: ["IMG_8803.JPG", "IMG_8804.JPG"],
+          material: "Хлопок + полиэстер",
+          condition: "Новая вещь",
+          price: 300,
+        },
+        {
+          id: "w18",
+          title: "Джинсовые шорты 38 Eu",
+          category: "bottom",
+          photo: "IMG_8805.JPG",
+          gallery: ["IMG_8806.JPG", "IMG_8807.JPG", "IMG_8808.JPG"],
+          material: "Хлопок",
+          size: "38 Eu",
+          condition: "Хорошее",
+          price: 800,
+        },
+        {
+          id: "w19",
+          title: "Топ-лапша на завязках HOUSE размер M",
+          category: "top",
+          photo: "IMG_8861.JPG",
+          gallery: ["IMG_8862.JPG", "IMG_8864.JPG", "IMG_8863.JPG"],
+          material: "Хлопок",
+          size: "M",
+          condition: "Отличное",
+          price: 300,
+        },
+        {
+          id: "w20",
+          title: "Тёмные джинсы s.Oliver размер 40",
+          category: "bottom",
+          photo: "IMG_8890.JPG",
+          gallery: ["IMG_8889.JPG", "IMG_8888.JPG"],
+          material: "Хлопок",
+          size: "40",
+          condition: "Хорошее",
+          price: 800,
+        },
+        {
+          id: "w21",
+          title: "Летние шорты LTB размер 44 Ru",
+          category: "bottom",
+          photo: "IMG_8823.JPG",
+          gallery: [
+            "IMG_8824.JPG",
+            "IMG_8825.JPG",
+            "IMG_8826.JPG",
+            "IMG_8827.JPG",
+          ],
+          material: "Хлопок",
+          size: "нет этикетки",
+          condition: "Хорошее",
+          price: 800,
+        },
+        {
+          id: "w22",
+          title: "Футболка America Today размер L",
+          category: "top",
+          photo: "IMG_8885.JPG",
+          gallery: ["IMG_8886.JPG", "IMG_8887.JPG"],
+          material: "Хлопок",
+          size: "L",
+          condition: "Хорошее",
+          price: 500,
+        },
+        {
+          id: "w23",
+          title: "Джинсовые шорты размер 38 Eu",
+          category: "bottom",
+          photo: "IMG_8891.JPG",
+          material: "Хлопок",
+          size: "38 Eu",
+          condition: "Хорошее",
+          price: 500,
+        },
+        {
           id: "w24",
-          title: "Утеплённая куртка ONLY 44",
+          title: "Спортивный джемпер H&M DIVIDED 44 размер",
+          category: "top",
+          photo: "IMG_8898.JPG",
+          gallery: ["IMG_8899.JPG", "IMG_8900.JPG", "IMG_8901.JPG"],
+          material: "Хлопок",
+          size: "XS указан на этикетке, но на 44 размер норм",
+          condition: "Отличное",
+          price: 500,
+        },
+        {
+          id: "w25",
+          title:
+            "Мини-платье / купальник XXL (китайский размер, подойдёт на 44-46)",
           category: "set",
-          photo: "photo_2026-10-14_21-33-18.jpg",
+          photo: "swimsuit.png",
+          gallery: [
+            "IMG_8799.JPG",
+            "IMG_8800.JPG",
+            "IMG_8798.JPG",
+            "IMG_8797.JPG",
+          ],
+          material: "Полиэстер + эластан",
+          size: "XXL (китайская размерная сетка)",
+          condition: "Отличное, надевался один раз для съёмок",
+          price: 1000,
+          description:
+            "Купальник со скрытыми шортиками. Под водой декоративные элементы развеваются, как щупальца медузы.",
+        },
+        {
+          id: "w26",
+          title: "Спортивное платье oodji М",
+          category: "set",
+          photo: "IMG_8880.JPG",
+          gallery: ["IMG_8881.JPG", "IMG_8883.JPG", "IMG_8882.JPG"],
+          material: "Хлопок",
+          size: "M",
+          condition: "Хорошее",
+          price: 500,
+        },
+        {
+          id: "w27",
+          title: "Утеплённое пальто FILA 44",
+          category: "set",
+          photo: "fila.jpg",
+          gallery: [
+            "IMG_8902.JPG",
+            "IMG_8903.JPG",
+            "IMG_8904.JPG",
+            "IMG_8905.JPG",
+            "IMG_8906.JPG",
+            "photo_2026-10-14_21-33-43.jpg",
+          ],
+          material: "Полиэстер",
+          size: "158–164; подойдёт на взрослый 44",
+          condition: "Отличное",
+          price: 2500,
+          description:
+            "Надевалось для лыжных катаний на местном горнолыжном курорте. Не промокало во время снегопада; подойдёт подростку или на взрослый размер 44.",
+        },
+        {
+          id: "w28",
+          title: "Утеплённая куртка ONLY 44-46 размер",
+          category: "set",
+          photo: "only.png",
           gallery: [
             "IMG_8907.JPG",
             "IMG_8908.JPG",
             "IMG_8909.JPG",
             "IMG_8910.JPG",
+            "photo_2026-10-14_21-33-18.jpg",
           ],
           material: "Полиэстер",
           size: "S указан на этикетке, но подходит на 44-46 размер",
@@ -646,7 +663,7 @@
           price: 1500,
         },
         {
-          id: "w28",
+          id: "w29",
           title: "Утеплённая куртка Termit для дождливой погоды размер 46",
           category: "set",
           photo: "photo_2026-10-19_01-07-53.jpg",
@@ -796,24 +813,24 @@
       const beautyProducts = [
         {
           id: "b01",
-          title: "Молочко для очищения и крем с витамином C MIXA",
+          title: "Крем с витамином C и молочко для мягкого очищения кожи MIXA в подарок",
           category: "beauty",
           photo: "IMG_8978.JPG",
           gallery: ["IMG_8979.JPG"],
-          condition: "Молочко использовано наполовину, крем — почти полный",
+          condition: "Крем — почти полный (без пары нажатий), молочко — использовано где-то наполовину",
           price: 1000,
           description:
-            "Молочко для мягкого очищения кожи и крем для лица с витамином C. Куплены этим летом.",
+            "Крем для лица с витамином C MIXA, молочко той же фирмы для мягкого очищения в подарок. Куплены этим летом.",
         },
         {
           id: "b02",
-          title: "Тинт ESSENCE и пудра CATRICE",
+          title: "Блеск для губ с перцем и Тинт ESSENCE, пудра CATRICE",
           category: "beauty",
-          photo: "IMG_8986.JPG",
+          photo: "photo_2026-10-19_21-11-33.JPG",
           condition: "Использовались пару раз",
           price: 500,
           description:
-            "Тинт для губ и щёк ESSENCE и пудра CATRICE от тёмных кругов под глазами.",
+            "Блеск для губ с перцем, Тинт ESSENCE и пудра CATRICE от тёмных кругов под глазами.",
         },
         {
           id: "b03",
@@ -829,7 +846,7 @@
           title: "Armani My Way Nectar Eau de Parfum, 30 мл",
           category: "beauty",
           photo: "IMG_8984.JPG",
-          condition: "Осталось примерно три четверти",
+          condition: "Осталось чуть больше трёх четвертей флакона",
           price: 5000,
         },
         {
@@ -848,147 +865,154 @@
           title: "Яркая рубашка и широкие джинсы",
           note: "Свободная рубашка, майка LCW и джинсы HOUSE",
           photo: "IMG_8871.JPG",
-          items: ["w19", "w14", "w05"],
+          items: ["w01", "w02", "w03"],
         },
         {
           id: "look-02",
           title: "Лёгкий джемпер и деним",
           note: "Джемпер LCW и потёртые джинсы ZARA",
           photo: "IMG_8851.JPG",
-          items: ["w13", "w12"],
+          items: ["w04", "w05"],
         },
         {
           id: "look-03",
           title: "Шерстяной костюм для осенних прогулок",
           note: "Тёплый комплект для прохладных дней",
           photo: "IMG_9009.JPG",
-          items: ["w01"],
+          items: ["w06"],
         },
         {
           id: "look-04",
           title: "Серое платье H&M для вечера",
           note: "Приталенное платье для вечера с коктейлем",
           photo: "IMG_9001.JPG",
-          items: ["w25"],
+          items: ["w07"],
         },
         {
           id: "look-05",
           title: "Декоративный джемпер и деним",
           note: "Джемпер LCW и потёртые джинсы ZARA",
           photo: "IMG_8892.JPG",
-          items: ["w16", "w12"],
+          items: ["w08", "w05"],
+        },
+        {
+          id: "look-22",
+          title: "Блестящая праздничная юбка и ассиметричный топ",
+          note: "Подойдёт для вечеринки или фотосессии",
+          photo: "photo_2026-10-19_21-08-23.jpg",
+          items: ["w09", "w10"],
         },
         {
           id: "look-06",
           title: "Широкие джинсы и открытые плечи",
           note: "Топ с открытыми плечами и джинсы HOUSE",
           photo: "IMG_8811.JPG",
-          items: ["w04", "w05"],
+          items: ["w11", "w03"],
         },
         {
           id: "look-07",
           title: "Рубашка и потёртый деним",
           note: "Рубашка Befree и джинсы ZUIKI",
           photo: "IMG_8829.JPG",
-          items: ["w06", "w08"],
+          items: ["w12", "w13"],
         },
         {
           id: "look-08",
           title: "Асимметрия и деним",
           note: "Асимметричный топ и джинсы Slim&Denim",
           photo: "IMG_8840.JPG",
-          items: ["w09", "w10"],
+          items: ["w09", "w14"],
         },
         {
           id: "look-09",
-          title: "Лёгкое платье с запахом",
+          title: "Лёгкое платье с запАхом",
           note: "Платье с животным принтом и боковыми разрезами",
           photo: "IMG_8998.JPG",
-          items: ["w26"],
+          items: ["w15"],
         },
         {
           id: "look-10",
           title: "Платье-рубашка DeFacto",
           note: "Прямое платье с леопардовым принтом",
           photo: "IMG_8993.JPG",
-          items: ["w27"],
+          items: ["w16"],
         },
         {
           id: "look-11",
           title: "Пляжные выходные",
           note: "Топ и джинсовые шорты",
           photo: "IMG_8802.JPG",
-          items: ["w02", "w03"],
+          items: ["w17", "w18"],
         },
         {
           id: "look-12",
           title: "Топ-лапша на завязках и потёртые джинсы",
           note: "Топ HOUSE и джинсы ZARA",
           photo: "IMG_8850.JPG",
-          items: ["w11", "w12"],
+          items: ["w19", "w05"],
         },
         {
           id: "look-13",
           title: "Майка и тёмные джинсы",
           note: "Летняя майка LCW и джинсы s.Oliver",
           photo: "IMG_8868.JPG",
-          items: ["w14", "w15"],
+          items: ["w02", "w20"],
         },
         {
           id: "look-14",
           title: "Летняя рубашка и шорты",
           note: "Полупрозрачная рубашка Befree и шорты LTB",
           photo: "IMG_8822.JPG",
-          items: ["w06", "w07"],
+          items: ["w12", "w21"],
         },
         {
           id: "look-15",
           title: "Футболка и джинсовые шорты",
           note: "Футболка America Today и шорты",
           photo: "IMG_8884.JPG",
-          items: ["w17", "w18"],
+          items: ["w22", "w23"],
         },
         {
           id: "look-16",
           title: "Образ со спортивным джемпером H&M",
           note: "Продаётся только джемпер H&M DIVIDED; юбка на фото — пример образа и в продажу не входит",
           photo: "IMG_8897.JPG",
-          items: ["w20"],
+          items: ["w24"],
         },
         {
           id: "look-17",
           title: "Платье-купальник",
           note: "Мини-платье со скрытыми шортиками",
           photo: "swimsuit.png",
-          items: ["w21"],
+          items: ["w25"],
         },
         {
           id: "look-18",
           title: "Спортивное платье oodji",
           note: "Домашнее спортивное платье из хлопка",
           photo: "IMG_8880.JPG",
-          items: ["w22"],
+          items: ["w26"],
         },
         {
           id: "look-19",
           title: "Утеплённое пальто FILA",
           note: "Для осени, зимы и снежных прогулок",
           photo: "fila.jpg",
-          items: ["w23"],
+          items: ["w27"],
         },
         {
           id: "look-20",
           title: "Утеплённая куртка ONLY",
           note: "Куртка для тёплой зимы",
-          photo: "photo_2026-10-14_21-33-18.jpg",
-          items: ["w24"],
+          photo: "only.png",
+          items: ["w28"],
         },
         {
           id: "look-21",
           title: "Утеплённая куртка Termit",
           note: "Куртка для дождливой осени и тёплой зимы",
           photo: "termit.png",
-          items: ["w28"],
+          items: ["w29"],
         },
       ];
 
@@ -1020,7 +1044,8 @@
       let lightboxPhotoIndex = 0;
       let lightboxSwipeStart = null;
       let activeFilter = "all";
-      const reservedProductIds = new Set(["w19", "w14", "w05", "w08", "w24"]);
+      // IDs of products that are reserved and should show a "БРОНЬ" badge
+      const reservedProductIds = new Set([]);
 
       function imagePath(filename) {
         return `img/${encodeURIComponent(filename)}`;
