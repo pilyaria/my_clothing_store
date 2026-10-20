@@ -1065,18 +1065,26 @@
       let lightboxPhotos = [];
       let lightboxPhotoIndex = 0;
       let lightboxSwipeStart = null;
+      let lightboxShowsSoldProduct = false;
       let activeFilter = "all";
       // IDs of products that are reserved and should show a "БРОНЬ" badge
-      const reservedProductIds = new Set(["w01", "w30","b05"]);
+      const reservedProductIds = new Set(["w01", "w30"]);
+      const soldProductIds = new Set(["b05"]);
 
       function imagePath(filename) {
         return `img/${encodeURIComponent(filename)}`;
       }
 
       function reservationBadge(product, className = "") {
+        if (soldProductIds.has(product.id))
+          return `<span class="reservation-badge reservation-badge--sold ${className}">ПРОДАНО</span>`;
         return reservedProductIds.has(product.id)
           ? `<span class="reservation-badge ${className}">БРОНЬ</span>`
           : "";
+      }
+
+      function soldImageClass(product) {
+        return soldProductIds.has(product.id) ? "sold-product-image" : "";
       }
 
       function priceLabel(product) {
@@ -1111,7 +1119,7 @@
         const typeLabel = categoryLabel(product);
         return `<article class="product-card" style="--card-index:${index}">
 				<button class="product-image" type="button" data-product="${product.id}" aria-label="Подробнее: ${product.title}">
-					<img src="${imagePath(product.photo)}" alt="${product.title}" loading="lazy">
+					<img class="${soldImageClass(product)}" src="${imagePath(product.photo)}" alt="${product.title}" loading="lazy">
 					<span class="image-index">${typeLabel}</span>${reservationBadge(product, "reservation-badge--overlay")}<span class="image-open arrow-icon" aria-hidden="true">↗︎</span>
 				</button>
 				<div class="product-info"><div><p class="product-kind">${typeLabel} · ОДНА ПОЗИЦИЯ</p><h3><button class="product-title-link" type="button" data-product="${product.id}">${product.title}</button></h3></div><span class="product-price">${priceLabel(product)}${reservationBadge(product)}</span></div>
@@ -1188,6 +1196,10 @@
         lightboxPhotoIndex =
           (index + lightboxPhotos.length) % lightboxPhotos.length;
         const photo = lightboxPhotos[lightboxPhotoIndex];
+        lightboxImage.classList.toggle(
+          "sold-product-image",
+          lightboxShowsSoldProduct,
+        );
         lightboxImage.src = photo;
         const mainImage = document.querySelector("[data-main-image]");
         if (mainImage) mainImage.src = photo;
@@ -1226,12 +1238,13 @@
         const matchingLooks = looks.filter((look) =>
           look.items.includes(product.id),
         );
+        lightboxShowsSoldProduct = soldProductIds.has(product.id);
         catalogView.hidden = true;
         detailView.hidden = false;
         detailView.innerHTML = `
 				<div class="detail-back-row"><button class="back-button" type="button" data-back><span aria-hidden="true">←</span> Назад к каталогу</button><span class="detail-id">${categoryLabel(product)} / ${product.id.toUpperCase()}</span></div>
-				<section class="product-detail"><div class="detail-gallery"><button class="detail-photo" type="button" data-zoom-photo aria-label="Увеличить фото: ${product.title}"><img data-main-image src="${imagePath(product.photo)}" alt="${product.title}">${reservationBadge(product, "reservation-badge--overlay")}<span class="detail-photo-label">${categoryLabel(product)}</span><span class="zoom-hint" aria-hidden="true">⤢</span></button>
-					<div class="detail-thumbnails" aria-label="Фотографии товара">${photos.map((photo, index) => `<button type="button" class="detail-thumb${index === 0 ? " is-active" : ""}" data-gallery-src="${imagePath(photo)}" aria-label="Фото ${index + 1} товара"><img src="${imagePath(photo)}" alt="" loading="lazy"></button>`).join("")}</div></div>
+				<section class="product-detail"><div class="detail-gallery"><button class="detail-photo" type="button" data-zoom-photo aria-label="Увеличить фото: ${product.title}"><img class="${soldImageClass(product)}" data-main-image src="${imagePath(product.photo)}" alt="${product.title}">${reservationBadge(product, "reservation-badge--overlay")}<span class="detail-photo-label">${categoryLabel(product)}</span><span class="zoom-hint" aria-hidden="true">⤢</span></button>
+					<div class="detail-thumbnails" aria-label="Фотографии товара">${photos.map((photo, index) => `<button type="button" class="detail-thumb${index === 0 ? " is-active" : ""}" data-gallery-src="${imagePath(photo)}" aria-label="Фото ${index + 1} товара"><img class="${soldImageClass(product)}" src="${imagePath(photo)}" alt="" loading="lazy"></button>`).join("")}</div></div>
 					<div class="detail-copy"><p class="eyebrow"><span>${product.id.toUpperCase()}</span> ${categoryLabel(product)} · ДОМАШНЯЯ РАСПРОДАЖА</p><h1>${product.title}</h1>${product.description ? `<p class="detail-description">${product.description}</p>` : ""}<p class="detail-price">${priceLabel(product)}${reservationBadge(product)}</p>
 						<dl class="spec-list">${renderSpecs(product)}</dl>
 						<button class="button button-dark copy-button" type="button" data-copy="${product.id}">Скопировать название <span class="arrow-icon" aria-hidden="true">↗︎</span></button><p class="detail-hint">Уточните наличие у продавца в <a href="https://t.me/pilyaria" target="_blank" title="Telegram Message" rel="noopener noreferrer" class="contacts-section-link">@pilyaria</a>. Корзины и регистрации нет. <span id="copy-status" aria-live="polite"></span></p>
@@ -1243,6 +1256,7 @@
       function showLook(id) {
         const look = looks.find((item) => item.id === id);
         if (!look) return showCatalog();
+        lightboxShowsSoldProduct = false;
         const lookProducts = look.items
           .map((productId) =>
             allProducts.find((product) => product.id === productId),
@@ -1270,7 +1284,7 @@
 				<div class="detail-back-row"><button class="back-button" type="button" data-back><span aria-hidden="true">←</span> Назад к каталогу</button><span class="detail-id">ГОТОВЫЕ ОБРАЗЫ / ${look.id.slice(5)}</span></div>
 				<section class="look-detail"><button class="look-detail-photo" type="button" data-zoom-look aria-label="Увеличить фото образа: ${look.title}"><img src="${imagePath(look.photo)}" alt="${look.title}"><span class="detail-photo-label">ГОТОВЫЙ ОБРАЗ</span><span class="zoom-hint" aria-hidden="true">⤢</span></button>
 					<div class="look-detail-copy"><p class="eyebrow"><span>${look.id.slice(5)}</span> ВЕЩИ ВМЕСТЕ</p><h1>${look.title}</h1><p class="detail-description">${look.note}.</p>
-						<div class="look-items">${lookProducts.map((product) => `<button class="look-item" type="button" data-product="${product.id}"><img src="${imagePath(product.photo)}" alt="" loading="lazy"><span><small>${categoryLabel(product)}</small><strong>${product.title}</strong>${reservationBadge(product)}</span><span class="look-item-price">${priceLabel(product)}</span><span class="arrow-icon" aria-hidden="true">↗︎</span></button>`).join("")}</div>
+						<div class="look-items">${lookProducts.map((product) => `<button class="look-item" type="button" data-product="${product.id}"><img class="${soldImageClass(product)}" src="${imagePath(product.photo)}" alt="" loading="lazy"><span><small>${categoryLabel(product)}</small><strong>${product.title}</strong>${reservationBadge(product)}</span><span class="look-item-price">${priceLabel(product)}</span><span class="arrow-icon" aria-hidden="true">↗︎</span></button>`).join("")}</div>
 						<div class="look-total"><span>Общая стоимость</span><strong>${total ? priceLabel(total) : "См. цены позиций"}</strong></div><a class="text-link" href="#catalog">Вернуться ко всем вещам <span class="arrow-icon" aria-hidden="true">↗︎</span></a>
 					</div></section>`;
         window.scrollTo({ top: 0, behavior: "smooth" });

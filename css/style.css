@@ -79,9 +79,11 @@ h1, h2, h3, p { margin-top: 0; }
 .product-card { min-width: 0; animation: rise-in .5s calc(var(--card-index) * 45ms) both; }
 .product-image { position: relative; width: 100%; height: auto; aspect-ratio: 4 / 4.7; display: block; padding: 0; overflow: hidden; border: 0; background: #e9e8df; text-align: left; }
 .product-image img { transition: transform .5s cubic-bezier(.2,.7,.25,1); }
+.sold-product-image { filter: grayscale(1) blur(1.5px); }
 .product-image:hover img { transform: scale(1.04); }
 .image-index { position: absolute; top: 12px; left: 12px; padding: 7px 9px; background: var(--paper); color: var(--green-dark); font-size: 8px; font-weight: 700; letter-spacing: .1em; }
 .reservation-badge { width: fit-content; display: inline-flex; align-items: center; padding: 6px 8px; background: var(--coral); color: white; font-family: var(--sans); font-size: 8px; font-weight: 700; letter-spacing: .1em; line-height: 1; }
+.reservation-badge--sold { background: #536875; }
 .reservation-badge--overlay { position: absolute; z-index: 1; top: 12px; right: 12px; }
 .image-open, .look-open { position: absolute; right: 12px; bottom: 12px; width: 34px; height: 34px; display: grid; place-items: center; background: var(--lime); color: var(--green-dark); font-size: 17px; transition: transform .2s ease; }
 .product-image:hover .image-open, .look-card:hover .look-open { transform: rotate(45deg); }
