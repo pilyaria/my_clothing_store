@@ -281,6 +281,7 @@
             "IMG_8874.JPG",
             "IMG_8875.JPG",
             "IMG_8876.JPG",
+            "photo_2026-10-20_11-51-01.jpg",
           ],
           material: "Хлопок",
           size: "48, оверсайз на 44-46 размер",
@@ -385,6 +386,24 @@
             "Приталенное платье: на рост 165 см чуть прикрывает колени. Спина была полностью открыта от пояса; для мероприятия её частично зашили, но можно вернуть первоначальный вид.",
         },
         {
+          id: "w30",
+          title: "Мохная черная шубка CALLIOPE размер M",
+          category: "top",
+          photo: "photo_2026-10-20_11-50-10.jpg",
+          gallery: [
+            "photo_2026-10-20_11-51-24.jpg",
+            "photo_2026-10-20_11-51-30.jpg",
+            "photo_2026-10-20_11-51-36.jpg",
+            "photo_2026-10-20_11-51-43.jpg",
+          ],
+          material: "Акрил и Полиэстер",
+          size: "М",
+          condition: "Отличное",
+          price: 1000,
+          description:
+            "Мохнатая черная шубка (почти, как у Марлы Сингер). Можно носить как накидку или как полноценную верхнюю одежду на вечер (есть скрытые крючки-застёжки). Подойдёт на размер M, но свободный крой позволяет носить и на L.",
+        },
+        {
           id: "w08",
           title: "Джемпер LCW с декором размер L",
           category: "top",
@@ -408,7 +427,7 @@
         },
         {
           id: "w10",
-          title: "Блистящая юбка из тонкой джинсы размер 44-46",
+          title: "Блестящая юбка из тонкой джинсы размер 44-46",
           category: "bottom",
           photo: "photo_2026-10-19_21-08-02.jpg",
           gallery: [
@@ -813,11 +832,13 @@
       const beautyProducts = [
         {
           id: "b01",
-          title: "Крем с витамином C и молочко для мягкого очищения кожи MIXA в подарок",
+          title:
+            "Крем с витамином C и молочко для мягкого очищения кожи MIXA в подарок",
           category: "beauty",
           photo: "IMG_8978.JPG",
           gallery: ["IMG_8979.JPG"],
-          condition: "Крем — почти полный (без пары нажатий), молочко — использовано где-то наполовину",
+          condition:
+            "Крем — почти полный (без пары нажатий), молочко — использовано где-то наполовину",
           price: 900,
           description:
             "Крем для лица с витамином C MIXA, молочко той же фирмы для мягкого очищения в подарок. Куплены этим летом.",
@@ -883,10 +904,10 @@
         },
         {
           id: "look-04",
-          title: "Серое платье H&M для вечера",
+          title: "Серое платье H&M для вечера с шубкой-накидкой",
           note: "Приталенное платье для вечера с коктейлем",
           photo: "IMG_9001.JPG",
-          items: ["w07"],
+          items: ["w07", "w30"],
         },
         {
           id: "look-05",
@@ -900,7 +921,7 @@
           title: "Блестящая праздничная юбка и ассиметричный топ",
           note: "Подойдёт для вечеринки или фотосессии",
           photo: "photo_2026-10-19_21-08-23.jpg",
-          items: ["w09", "w10"],
+          items: ["w09", "w10", "w30"],
         },
         {
           id: "look-06",
@@ -1045,7 +1066,7 @@
       let lightboxSwipeStart = null;
       let activeFilter = "all";
       // IDs of products that are reserved and should show a "БРОНЬ" badge
-      const reservedProductIds = new Set([]);
+      const reservedProductIds = new Set(["w01"]);
 
       function imagePath(filename) {
         return `img/${encodeURIComponent(filename)}`;
@@ -1092,7 +1113,7 @@
 					<img src="${imagePath(product.photo)}" alt="${product.title}" loading="lazy">
 					<span class="image-index">${typeLabel}</span>${reservationBadge(product, "reservation-badge--overlay")}<span class="image-open arrow-icon" aria-hidden="true">↗︎</span>
 				</button>
-				<div class="product-info"><div><p class="product-kind">${typeLabel} · ОДНА ПОЗИЦИЯ</p><h3>${product.title}</h3></div><span class="product-price">${priceLabel(product)}${reservationBadge(product)}</span></div>
+				<div class="product-info"><div><p class="product-kind">${typeLabel} · ОДНА ПОЗИЦИЯ</p><h3><button class="product-title-link" type="button" data-product="${product.id}">${product.title}</button></h3></div><span class="product-price">${priceLabel(product)}${reservationBadge(product)}</span></div>
 				<div class="product-facts">${productFacts(product)
           .map((fact) => `<span>${fact}</span>`)
           .join("")}</div>
@@ -1213,7 +1234,7 @@
 					<div class="detail-copy"><p class="eyebrow"><span>${product.id.toUpperCase()}</span> ${categoryLabel(product)} · ДОМАШНЯЯ РАСПРОДАЖА</p><h1>${product.title}</h1>${product.description ? `<p class="detail-description">${product.description}</p>` : ""}<p class="detail-price">${priceLabel(product)}${reservationBadge(product)}</p>
 						<dl class="spec-list">${renderSpecs(product)}</dl>
 						<button class="button button-dark copy-button" type="button" data-copy="${product.id}">Скопировать название <span class="arrow-icon" aria-hidden="true">↗︎</span></button><p class="detail-hint">Уточните наличие у продавца в <a href="https://t.me/pilyaria" target="_blank" title="Telegram Message" rel="noopener noreferrer" class="contacts-section-link">@pilyaria</a>. Корзины и регистрации нет. <span id="copy-status" aria-live="polite"></span></p>
-						${matchingLooks.length ? `<div class="look-suggestion"><span class="suggestion-mark">+</span><span>Входит в готовый образ</span><button type="button" data-look="${matchingLooks[0].id}">Образ ${matchingLooks[0].id.slice(5)}</button></div>` : ""}
+						${matchingLooks.length ? `<div class="look-suggestion"><span class="look-suggestion-label">Входит в готовый образ</span><div class="look-suggestion-grid">${matchingLooks.map((look) => `<button class="look-suggestion-card" type="button" data-look="${look.id}" aria-label="Открыть образ ${look.id.slice(5)}: ${look.title}"><img src="${imagePath(look.photo)}" alt="Образ ${look.id.slice(5)}" loading="lazy"><span>Образ ${look.id.slice(5)}</span></button>`).join("")}</div></div>` : ""}
 					</div></section>`;
         window.scrollTo({ top: 0, behavior: "smooth" });
       }

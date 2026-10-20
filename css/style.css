@@ -88,6 +88,8 @@ h1, h2, h3, p { margin-top: 0; }
 .product-info { display: flex; align-items: end; justify-content: space-between; gap: 10px; padding-top: 14px; }
 .product-kind { margin-bottom: 7px; color: var(--muted); font-size: 8px; font-weight: 700; letter-spacing: .1em; }
 .product-info h3 { margin: 0; font-family: var(--serif); font-size: 19px; font-weight: 500; line-height: 1.2; }
+.product-title-link { padding: 0; border: 0; background: transparent; font: inherit; text-align: left; }
+.product-title-link:hover { color: var(--green); }
 .product-price { flex: 0 0 auto; display: flex; align-items: center; justify-content: flex-end; gap: 8px; padding-bottom: 2px; color: var(--green); font-size: 10px; font-weight: 700; text-align: right; white-space: nowrap; }
 .product-price .reservation-badge { color: white; }
 .product-facts { min-height: 35px; display: flex; flex-wrap: wrap; align-content: start; gap: 4px 10px; margin-top: 9px; color: var(--muted); font-size: 9px; line-height: 1.5; }
@@ -167,9 +169,13 @@ h1, h2, h3, p { margin-top: 0; }
 .spec-list dd { margin: 0; font-weight: 600; text-align: right; }
 .copy-button { min-width: 225px; }
 .detail-hint { max-width: 355px; margin: 12px 0 27px; color: var(--muted); font-size: 9px; line-height: 1.6; }
-.look-suggestion { display: flex; align-items: center; gap: 10px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
-.suggestion-mark { width: 22px; height: 22px; display: grid; place-items: center; border: 1px solid var(--coral); border-radius: 50%; color: var(--coral); }
-.look-suggestion button { margin-left: auto; padding: 7px 0 7px 10px; border: 0; background: transparent; color: var(--green); font-size: 10px; font-weight: 700; }
+.look-suggestion { padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+.look-suggestion-label { display: block; margin-bottom: 13px; }
+.look-suggestion-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 10px; margin-top: 13px; }
+.look-suggestion-card { min-width: 0; padding: 0; border: 0; background: transparent; color: var(--green); font-size: 9px; font-weight: 700; text-align: left; }
+.look-suggestion-card img { width: 100%; aspect-ratio: 1 / 1.3; display: block; object-fit: contain; background: var(--paper-deep); transition: opacity .2s ease; }
+.look-suggestion-card:hover img { opacity: .8; }
+.look-suggestion-card span { display: block; padding-top: 6px; }
 .look-detail { grid-template-columns: 1fr 1fr; }
 .look-detail-photo { width: 100%; display: block; padding: 0; border: 0; aspect-ratio: 4 / 4.3; cursor: zoom-in; text-align: left; }
 .look-detail-photo .zoom-hint { z-index: 1; }
