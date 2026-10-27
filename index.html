@@ -1068,9 +1068,13 @@
       let lightboxShowsSoldProduct = false;
       let activeFilter = "all";
       // IDs of products that are reserved and should show a "БРОНЬ" badge
-      const reservedProductIds = new Set(["w28", "w29"]);
+      const reservedProductIds = new Set([]);
       // IDs of products that are sold and should show a "ПРОДАНО" badge
-      const soldProductIds = new Set(["b05", "w01", "w05", "w30"]);
+      const soldProductIds = new Set(["b05", "w01", "w05", "w29", "w30"]);
+      // IDs of looks that should show a "ПРОДАНО" badge and image blur
+      const soldLookIds = new Set(["look-21"]);
+      // IDs of looks that should show a "ЧАСТИЧНО ПРОДАНО" badge
+      const partiallySoldLookIds = new Set(["look-01", "look-04", "look-22", "look-12"]);
 
       function imagePath(filename) {
         return `img/${encodeURIComponent(filename)}`;
@@ -1086,6 +1090,18 @@
 
       function soldImageClass(product) {
         return soldProductIds.has(product.id) ? "sold-product-image" : "";
+      }
+
+      function lookBadge(look, className = "") {
+        if (soldLookIds.has(look.id))
+          return `<span class="reservation-badge reservation-badge--sold ${className}">ПРОДАНО</span>`;
+        return partiallySoldLookIds.has(look.id)
+          ? `<span class="reservation-badge reservation-badge--partial ${className}">ЧАСТИЧНО ПРОДАНО</span>`
+          : "";
+      }
+
+      function soldLookImageClass(look) {
+        return soldLookIds.has(look.id) ? "sold-product-image" : "";
       }
 
       function priceLabel(product) {
@@ -1172,7 +1188,7 @@
           .map(
             (look, index) => `
 				<button class="look-card look-card-${index + 1}" type="button" data-look="${look.id}" style="--card-index:${index}">
-					<span class="look-image"><img src="${imagePath(look.photo)}" alt="" loading="lazy"><span class="look-number">ОБРАЗ ${look.id.slice(5)}</span><span class="look-open arrow-icon" aria-hidden="true">↗︎</span></span>
+					<span class="look-image"><img class="${soldLookImageClass(look)}" src="${imagePath(look.photo)}" alt="" loading="lazy"><span class="look-number">ОБРАЗ ${look.id.slice(5)}</span>${lookBadge(look, "reservation-badge--overlay")}<span class="look-open arrow-icon" aria-hidden="true">↗︎</span></span>
 					<span class="look-caption"><span><strong>${look.title}</strong><small>${look.note}</small></span><span class="look-count">${look.items.length} ${look.items.length === 1 ? "позиция" : "позиции"}</span></span>
 				</button>`,
           )
@@ -1257,7 +1273,7 @@
       function showLook(id) {
         const look = looks.find((item) => item.id === id);
         if (!look) return showCatalog();
-        lightboxShowsSoldProduct = false;
+        lightboxShowsSoldProduct = soldLookIds.has(look.id);
         const lookProducts = look.items
           .map((productId) =>
             allProducts.find((product) => product.id === productId),
@@ -1283,7 +1299,7 @@
         detailView.hidden = false;
         detailView.innerHTML = `
 				<div class="detail-back-row"><button class="back-button" type="button" data-back><span aria-hidden="true">←</span> Назад к каталогу</button><span class="detail-id">ГОТОВЫЕ ОБРАЗЫ / ${look.id.slice(5)}</span></div>
-				<section class="look-detail"><button class="look-detail-photo" type="button" data-zoom-look aria-label="Увеличить фото образа: ${look.title}"><img src="${imagePath(look.photo)}" alt="${look.title}"><span class="detail-photo-label">ГОТОВЫЙ ОБРАЗ</span><span class="zoom-hint" aria-hidden="true">⤢</span></button>
+				<section class="look-detail"><button class="look-detail-photo" type="button" data-zoom-look aria-label="Увеличить фото образа: ${look.title}"><img class="${soldLookImageClass(look)}" src="${imagePath(look.photo)}" alt="${look.title}">${lookBadge(look, "reservation-badge--overlay")}<span class="detail-photo-label">ГОТОВЫЙ ОБРАЗ</span><span class="zoom-hint" aria-hidden="true">⤢</span></button>
 					<div class="look-detail-copy"><p class="eyebrow"><span>${look.id.slice(5)}</span> ВЕЩИ ВМЕСТЕ</p><h1>${look.title}</h1><p class="detail-description">${look.note}.</p>
 						<div class="look-items">${lookProducts.map((product) => `<button class="look-item" type="button" data-product="${product.id}"><img class="${soldImageClass(product)}" src="${imagePath(product.photo)}" alt="" loading="lazy"><span><small>${categoryLabel(product)}</small><strong>${product.title}</strong>${reservationBadge(product)}</span><span class="look-item-price">${priceLabel(product)}</span><span class="arrow-icon" aria-hidden="true">↗︎</span></button>`).join("")}</div>
 						<div class="look-total"><span>Общая стоимость</span><strong>${total ? priceLabel(total) : "См. цены позиций"}</strong></div><a class="text-link" href="#catalog">Вернуться ко всем вещам <span class="arrow-icon" aria-hidden="true">↗︎</span></a>

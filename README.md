@@ -29,3 +29,5 @@ python -m http.server 8000
 - `img/` — фотографии товаров и образов.
 
 Чтобы изменить каталог, отредактируйте массивы `products`, `techProducts`, `accessoryProducts`, `beautyProducts` и `looks` в `index.html`. Фотографии добавляйте в `img/` и указывайте их имена в данных соответствующих товаров или образов.
+
+Статусы вещей настраиваются в наборах `soldProductIds` и `reservedProductIds`, а статусы готовых образов — в `soldLookIds` и `partiallySoldLookIds` в `index.html`. Для проданного образа показывается бейдж «ПРОДАНО» и размывается фото.
