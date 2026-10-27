@@ -119,6 +119,7 @@ h1, h2, h3, p { margin-top: 0; }
 .look-image img { transition: transform .5s cubic-bezier(.2,.7,.25,1); }
 .look-card:hover .look-image img { transform: scale(1.035); }
 .look-number { position: absolute; top: 11px; left: 11px; padding: 6px 8px; background: var(--paper); color: var(--green-dark); font-size: 8px; font-weight: 700; letter-spacing: .08em; }
+.look-image .reservation-badge--overlay { top: auto; right: auto; bottom: 11px; left: 11px; }
 .look-open { bottom: 11px; }
 .look-caption { display: flex; align-items: start; justify-content: space-between; gap: 8px; padding-top: 11px; }
 .look-caption strong, .look-caption small { display: block; }
