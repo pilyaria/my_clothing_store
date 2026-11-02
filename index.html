@@ -720,6 +720,22 @@
           condition: "Отличное, без повреждений",
           price: 2000,
         },
+        {
+          id: "w31",
+          title: "Светлые джинсы LCW размер 44",
+          category: "bottom",
+          photo: "photo_2026-11-03_02-12-47.jpg",
+          gallery: [
+            "photo_2026-11-03_02-12-52.jpg",
+            "photo_2026-11-03_02-13-36.jpg",
+            "photo_2026-11-03_02-13-43.jpg",
+            "photo_2026-11-03_02-13-27.jpg",
+          ],
+          material: "Хлопок",
+          size: "на этикетке указано 28, подойдёт на 44 размер",
+          condition: "Отличное, без потёртостей и повреждений",
+          price: 800,
+        },
       ];
 
       const techProducts = [
@@ -742,7 +758,8 @@
             "photo_2026-10-14_21-41-48.jpg",
             "photo_2026-10-14_21-43-19.jpg",
           ],
-          price: 500,
+          price: 450,
+          originalPrice: 500,
           currency: "EUR",
           condition: "Отличное, без ремонтов и повреждений",
           details: [
@@ -763,7 +780,8 @@
           category: "tech",
           photo: "photo_2026-10-15_17-48-39.jpg",
           gallery: ["photo_2026-10-15_18-02-43.jpg"],
-          price: 1500,
+          price: 1000,
+          originalPrice: 1500,
           condition: "Новое",
           details: [
             ["Чехлы", "Защита камер, 4 шт"],
@@ -781,7 +799,8 @@
           photo: "drone.png",
           gallery: ["IMG_8913.JPG", "IMG_8912.JPG", "IMG_8911.JPG"],
           condition: "Новое",
-          price: 500,
+          price: 350,
+          originalPrice: 500,
           description:
             "Защита для посадки и взлёта, в том числе на воду. Совместимо с DJI Mini 3, Mini 3 Pro и Mini 4 Pro.",
         },
@@ -792,7 +811,8 @@
           photo: "photo_2026-10-14_21-57-03.jpg",
           gallery: ["photo_2026-10-14_21-57-03 (2).jpg"],
           condition: "Новая",
-          price: 500,
+          price: 350,
+          originalPrice: 500,
           description:
             "Совместима с DJI Mini 2, Mini 2 SE, Mini SE, Mini 4K и Mavic Mini.",
         },
@@ -816,7 +836,8 @@
           ],
           material: "Натуральная кожа",
           condition: "Отличное",
-          price: 3000,
+          price: 2500,
+          originalPrice: 3000,
           details: [
             ["Габариты", "37 × 12 × 28 см"],
             [
@@ -834,7 +855,8 @@
           photo: "photo_2026-10-15_15-43-47.jpg",
           material: "Кожзам",
           condition: "Новый",
-          price: 200,
+          price: 100,
+          originalPrice: 200,
           details: [
             ["Длина без пряжки", "108 см"],
             ["Ширина", "38 мм"],
@@ -848,12 +870,30 @@
           gallery: ["photo_2026-10-15_15-43-59.jpg"],
           size: "90D (может маломерить)",
           condition: "Новый",
-          price: 500,
+          price: 300,
+          originalPrice: 500,
           details: [["Чашка", "Без пуш-апа, поролоновая"]],
         },
       ];
 
       const beautyProducts = [
+        {
+          id: "b06",
+          title: "Мужская туалетная вода Light Blue Dolce & Gabbana, 100 мл",
+          category: "beauty",
+          photo: "photo_2026-11-03_02-14-16.jpg",
+           gallery: ["photo_2026-11-03_02-14-05.jpg"],
+          condition: "Не хватает одного распыления",
+          price: 9000,
+        },
+        {
+          id: "b04",
+          title: "Женская туалетная вода Armani My Way Nectar Eau de Parfum, 30 мл",
+          category: "beauty",
+          photo: "IMG_8984.JPG",
+          condition: "Осталось чуть больше трёх четвертей флакона",
+          price: 5000,
+        },
         {
           id: "b01",
           title:
@@ -863,7 +903,8 @@
           gallery: ["IMG_8979.JPG"],
           condition:
             "Крем — почти полный (без пары нажатий), молочко — использовано где-то наполовину",
-          price: 900,
+          price: 700,
+          originalPrice: 900,
           description:
             "Крем для лица с витамином C MIXA, молочко той же фирмы для мягкого очищения в подарок. Куплены этим летом.",
         },
@@ -873,7 +914,8 @@
           category: "beauty",
           photo: "photo_2026-10-19_21-11-33.jpg",
           condition: "Использовались пару раз",
-          price: 500,
+          price: 300,
+          originalPrice: 500,
           description:
             "Блеск для губ с перцем, Тинт ESSENCE и пудра CATRICE от тёмных кругов под глазами.",
         },
@@ -884,15 +926,8 @@
           photo: "IMG_8987.JPG",
           gallery: ["IMG_8988.JPG"],
           condition: "Осталось чуть больше половины",
-          price: 300,
-        },
-        {
-          id: "b04",
-          title: "Armani My Way Nectar Eau de Parfum, 30 мл",
-          category: "beauty",
-          photo: "IMG_8984.JPG",
-          condition: "Осталось чуть больше трёх четвертей флакона",
-          price: 5000,
+          price: 200,
+          originalPrice: 300,
         },
         {
           id: "b05",
@@ -915,9 +950,9 @@
         {
           id: "look-02",
           title: "Лёгкий джемпер и деним",
-          note: "Джемпер LCW и потёртые джинсы ZARA",
-          photo: "IMG_8851.JPG",
-          items: ["w04", "w05"],
+          note: "Джемпер и джинсы LCW",
+          photo: "photo_2026-11-03_02-12-35.jpg",
+          items: ["w04", "w31"],
         },
         {
           id: "look-03",
