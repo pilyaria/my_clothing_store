@@ -94,6 +94,8 @@ h1, h2, h3, p { margin-top: 0; }
 .product-title-link { padding: 0; border: 0; background: transparent; font: inherit; text-align: left; }
 .product-title-link:hover { color: var(--green); }
 .product-price { flex: 0 0 auto; display: flex; align-items: center; justify-content: flex-end; gap: 8px; padding-bottom: 2px; color: var(--green); font-size: 10px; font-weight: 700; text-align: right; white-space: nowrap; }
+.price-current { white-space: nowrap; }
+.price-original { color: var(--muted); font-size: .78em; font-weight: 400; }
 .product-price .reservation-badge { color: white; }
 .product-facts { min-height: 35px; display: flex; flex-wrap: wrap; align-content: start; gap: 4px 10px; margin-top: 9px; color: var(--muted); font-size: 9px; line-height: 1.5; }
 .product-facts span + span::before { margin-right: 9px; color: var(--coral); content: "/"; }
